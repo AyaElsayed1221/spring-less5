@@ -1,9 +1,9 @@
 # spring-less5
 Note:
 ## In Standalone application
-//Creating container object manually
+//Creating container object manually<br>
 ApplicationContext context = new ClassPathXmlApplicationContext();
-//destroy container object manually
+//destroy container object manually<br>
 context.close();
 
 ## In WEB application
