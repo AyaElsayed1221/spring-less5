@@ -11,9 +11,11 @@ public class Main {
        ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
 
        SongDao songDao = context.getBean("songDao",SongDao.class);
-      songDao.selectAllRows();
-     //songDao.deleteSongById(4);
-    // songDao.insertSong("Aisha Hala","Angham");
-    // songDao.selectAllRows();
+
+      // songDao.selectAllRows();
+     //songDao.deleteSongById(5);
+    //songDao.insertSong("Asmar","AbdelHaleem");
+     songDao.selectAllRows();
+
     }
 }
