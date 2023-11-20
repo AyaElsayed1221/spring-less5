@@ -1,5 +1,8 @@
 # spring-less5
 Note:
+## Bean Life Cycle
+![image](https://github.com/AyaElsayed1221/spring-less5/assets/101202928/a14a5f1a-90d2-41fb-9656-bb36a41a8fdf)
+
 ## In Standalone application
 //Creating container object manually<br>
 ApplicationContext context = new ClassPathXmlApplicationContext();<BR>
