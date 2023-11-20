@@ -2,7 +2,7 @@
 Note:
 ## In Standalone application
 //Creating container object manually<br>
-ApplicationContext context = new ClassPathXmlApplicationContext();
+ApplicationContext context = new ClassPathXmlApplicationContext();<BR>
 //destroy container object manually<br>
 context.close();
 
