@@ -1,10 +1,5 @@
 package org.aya;
-
-import com.sun.security.jgss.GSSUtil;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.ImportResource;
-import org.springframework.stereotype.Service;
-
 import java.sql.*;
 
 public class SongDao {
@@ -32,7 +27,7 @@ public class SongDao {
        //load driver
     Class.forName(driver);
 
-    try(Connection con = DriverManager.getConnection(url,username,password);) {
+    try(Connection con = DriverManager.getConnection(url,username,password)) {
 
         try(Statement stmt = con.createStatement()) {
 
@@ -53,5 +48,52 @@ public class SongDao {
         }
     }
 
-}
+    public void insertSong(String songName, String singerName){
+        try{
+            Class.forName(driver);
+
+            try(Connection con = DriverManager.getConnection(url,username,password)) {
+
+                try(Statement stmt = con.createStatement()) {
+
+                    stmt.executeUpdate("insert into songs (song_name, singer_name) values( '"+songName+"', '"+singerName+"')" );
+                           // stmt.executeUpdate("insert into songs (song_id, song_name, singer_name) values (" + songId + ", 'Laytak ma3na', 'Maher zein')");
+
+                }
+            }
+        }catch (ClassNotFoundException e1){
+            System.err.println("Driver not loaded");
+            e1.printStackTrace();
+        }catch ( SQLException e2){
+            System.err.println("There is an error in getting the connection");
+            e2.printStackTrace();
+        }
+    }
+
+    public  void deleteSongById(Integer songId){
+
+        try{
+            Class.forName(driver);
+
+        try(Connection con = DriverManager.getConnection(url,username,password)) {
+
+            try(Statement stmt = con.createStatement()) {
+
+                stmt.executeUpdate("delete from songs where song_id = "+songId);
+            }
+        }
+        }catch (ClassNotFoundException e1){
+            System.err.println("Driver not loaded");
+            e1.printStackTrace();
+        }catch ( SQLException e2){
+            System.err.println("There is an error in getting the connection");
+            e2.printStackTrace();
+        }
+
+        }
+
+
+
+    }
+
 

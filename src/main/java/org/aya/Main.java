@@ -12,5 +12,8 @@ public class Main {
 
        SongDao songDao = context.getBean("songDao",SongDao.class);
       songDao.selectAllRows();
+     //songDao.deleteSongById(4);
+    // songDao.insertSong("Aisha Hala","Angham");
+    // songDao.selectAllRows();
     }
 }
