@@ -38,7 +38,26 @@ as declared in the following pic
 
 ## IMP NOTE: A good habit to keep all the init and destroy method name the same to all your classes
 then instead of duplication of code for each bean and write init-method ="" and destroy-method ="", we can write them only once in the top configuration as default-init-method ="", and default-destroy-method ="".
+
 ![image](https://github.com/AyaElsayed1221/spring-less5/assets/101202928/d3ff1af5-48e0-4e0a-97cc-0e9a837c71b3)
+
+![image](https://github.com/AyaElsayed1221/spring-less5/assets/101202928/4c19c8d7-009a-4f0b-8f86-9bbb23a3d232)
+
+![image](https://github.com/AyaElsayed1221/spring-less5/assets/101202928/e494e96a-9bb4-441d-b774-296efaaab401)
+
+![image](https://github.com/AyaElsayed1221/spring-less5/assets/101202928/ef2cb8f8-ad63-47db-8fb3-33a15b1b7088)
+
+![image](https://github.com/AyaElsayed1221/spring-less5/assets/101202928/a49ab8f1-76f9-48f2-946a-a34410b6d187)
+
+![image](https://github.com/AyaElsayed1221/spring-less5/assets/101202928/d1986a1f-08f1-4f6d-be74-3527d2a838d4)
+
+### No need for annotation or XML here to make the init and the destroy methods as follows:
+
+![image](https://github.com/AyaElsayed1221/spring-less5/assets/101202928/37b03c7e-2d48-4758-bdfa-c51f48b7431a)
+
+
+
+
 
 
 
