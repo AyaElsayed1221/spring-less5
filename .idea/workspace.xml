@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9a958ee8-fb4a-4061-aa9b-7fae755db60c" name="Changes" comment="adding two methods insertSongRecord and deleteSongById">
+    <list default="true" id="9a958ee8-fb4a-4061-aa9b-7fae755db60c" name="Changes" comment="Illustration of the init and destroy methods">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/aya/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/aya/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/aya/SongDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/aya/SongDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/beans.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/beans.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,7 +97,14 @@
       <option name="project" value="LOCAL" />
       <updated>1700508583022</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Illustration of the init and destroy methods">
+      <created>1700557639115</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1700557639115</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -115,6 +121,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Illustratio of the .properties file and how to use @Value annotation" />
     <MESSAGE value="adding two methods insertSongRecord and deleteSongById" />
-    <option name="LAST_COMMIT_MESSAGE" value="adding two methods insertSongRecord and deleteSongById" />
+    <MESSAGE value="Illustration of the init and destroy methods" />
+    <option name="LAST_COMMIT_MESSAGE" value="Illustration of the init and destroy methods" />
   </component>
 </project>

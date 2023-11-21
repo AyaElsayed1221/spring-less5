@@ -1,21 +1,21 @@
 package org.aya;
-import org.springframework.beans.factory.annotation.Value;
-
+import lombok.Setter;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import java.sql.*;
 
+@Setter
 public class SongDao {
-    @Value("${database.driver}")
+    //@Value("${database.driver}")
     private String driver;
 
-    @Value("${database.url}")
+    //@Value("${database.url}")
     private String url;
 
-    @Value("${database.username}")
+    //@Value("${database.username}")
     private String username;
 
-    @Value("${database.password}")
+    //@Value("${database.password}")
     private String password;
 
     private Connection con;
@@ -32,7 +32,7 @@ public class SongDao {
      **/
 
     //Ths is a good coding
-    @PostConstruct
+    //@PostConstruct
     public void init(){
         System.out.println("init method is invoked");
         createSongDBConnection();
@@ -64,7 +64,7 @@ public class SongDao {
  * Before Spring remove SongDao bean from the container, it will call this method.
  *
  **/
-@PreDestroy
+//@PreDestroy
 public void destroy(){
     System.out.println("Destroy method is invoked");
     closeSongDBConnection();
@@ -77,7 +77,6 @@ public void destroy(){
             throw new RuntimeException(ex);
         }
 }
-
     public void selectAllRows()  {
 
         try(Statement stmt = con.createStatement()) {

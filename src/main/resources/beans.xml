@@ -5,10 +5,19 @@
        xsi:schemaLocation=" http://www.springframework.org/schema/beans
             http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
             http://www.springframework.org/schema/context
-            http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+            http://www.springframework.org/schema/context/spring-context-3.1.xsd"
+            default-init-method="init" default-destroy-method="destroy">
 
-    <context:annotation-config/>
+<!--    <context:annotation-config/>-->
     <context:property-placeholder location="classpath:database-info.properties"/>
 
-    <bean id = "songDao" class="org.aya.SongDao"></bean>
+    <bean id = "songDao" class="org.aya.SongDao" >
+        <property name="driver" value="${database.driver}"/>
+        <property name="url" value="${database.url}"/>
+        <property name="username" value="${database.username}"/>
+        <property name="password" value="${database.password}"/>
+    </bean>
+
+<!-- To use the following bean to activate the init and the destroy method u should use the <property tage> to inject dependencies instead of @Value bec we remove the <context annotation-config> -->
+<!--    <bean class="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor"/>-->
 </beans>
