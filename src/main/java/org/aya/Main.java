@@ -17,5 +17,7 @@ public class Main {
     //songDao.insertSong("Asmar","AbdelHaleem");
      songDao.selectAllRows();
 
+        // the destroy method will be invoked immediately before Spring destroy the context.
+        ( (ClassPathXmlApplicationContext) context).close();
     }
 }

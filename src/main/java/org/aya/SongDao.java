@@ -1,5 +1,8 @@
 package org.aya;
 import org.springframework.beans.factory.annotation.Value;
+
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import java.sql.*;
 
 public class SongDao {
@@ -15,85 +18,101 @@ public class SongDao {
     @Value("${database.password}")
     private String password;
 
-    public void selectAllRows()throws ClassNotFoundException, SQLException {
+    private Connection con;
 
-        /*
-        * I have a question ?:
-        * What is the diff between Class.forName(driver) and adding the dependency of mysql in the pom.xml.
-        * why i get an error when i remove the dependency from pom.xml  ?!
-        */
+    /** Init method:
+     *  The method createSongDBConnection() is not invoked in any place
+     *Here, the createSongDBConnection() method is the init method fo us.
+     * annotated the method with @PostConstruct to use it as an init method.
+     * We don't want to call our init metho, the Spring framwork will call it for us.
+     * We cn give our init method a name as anything we may say it init or createSongDB or xyz
+     *Why Init method ??
+     * 1. You can add custom code / logic during bean initialization
+     * It can be used for setting up resources like DB/Socked/file etc.
+     **/
 
-   try{
-       //load driver
-    Class.forName(driver);
+    //Ths is a good coding
+    @PostConstruct
+    public void init(){
+        System.out.println("init method is invoked");
+        createSongDBConnection();
+    }
 
-    try(Connection con = DriverManager.getConnection(url,username,password)) {
+    public void createSongDBConnection(){
+        try{
+            /*
+             * I have a question ?:
+             * What is the diff between Class.forName(driver) and adding the dependency of mysql in the pom.xml.
+             * why i get an error when i remove the dependency from pom.xml  ?!
+             */
+            //load driver
+            Class.forName(driver);
+
+             con = DriverManager.getConnection(url,username,password);
+
+        }catch (ClassNotFoundException e){
+            System.err.println("Failed to load the DATABASE DRIVER");
+            e.printStackTrace();
+        }catch (SQLException e){
+            System.err.println("There is an error in getting the connection");
+            e.printStackTrace();
+        }
+    }
+
+/**
+ * Destroy method:
+ * Before Spring remove SongDao bean from the container, it will call this method.
+ *
+ **/
+@PreDestroy
+public void destroy(){
+    System.out.println("Destroy method is invoked");
+    closeSongDBConnection();
+}
+
+    public void closeSongDBConnection(){
+        try {
+            con.close();
+        } catch (SQLException ex) {
+            throw new RuntimeException(ex);
+        }
+}
+
+    public void selectAllRows()  {
 
         try(Statement stmt = con.createStatement()) {
 
             try( ResultSet resultSet = stmt.executeQuery("select * from songs")){
-
                while(resultSet.next()){
                    System.out.println(resultSet.getInt("song_id"));
                    System.out.println(resultSet.getString("song_name"));
                    System.out.println(resultSet.getString("singer_name"));
                 }
-
-             }
             }
-        }
-     }catch (ClassNotFoundException exception){
-       System.err.println("Failed to load the DATABASE DRIVER");
-       exception.printStackTrace();
+     }catch (SQLException e){
+            e.printStackTrace();
         }
     }
 
     public void insertSong(String songName, String singerName){
-        try{
-            Class.forName(driver);
 
-            try(Connection con = DriverManager.getConnection(url,username,password)) {
-
-                try(Statement stmt = con.createStatement()) {
-
-                    stmt.executeUpdate("insert into songs (song_name, singer_name) values( '"+songName+"', '"+singerName+"')" );
-                           // stmt.executeUpdate("insert into songs (song_id, song_name, singer_name) values (" + songId + ", 'Laytak ma3na', 'Maher zein')");
-
-                }
-            }
-        }catch (ClassNotFoundException e1){
-            System.err.println("Driver not loaded");
-            e1.printStackTrace();
-        }catch ( SQLException e2){
+        try(Statement stmt = con.createStatement()) {
+            stmt.executeUpdate("insert into songs (song_name, singer_name) values( '"+songName+"', '"+singerName+"')" );
+        }catch ( SQLException e){
             System.err.println("There is an error in getting the connection");
-            e2.printStackTrace();
+            e.printStackTrace();
         }
     }
 
     public  void deleteSongById(Integer songId){
 
-        try{
-            Class.forName(driver);
-
-        try(Connection con = DriverManager.getConnection(url,username,password)) {
-
-            try(Statement stmt = con.createStatement()) {
-
-                stmt.executeUpdate("delete from songs where song_id = "+songId);
-            }
-        }
-        }catch (ClassNotFoundException e1){
-            System.err.println("Driver not loaded");
-            e1.printStackTrace();
-        }catch ( SQLException e2){
+    try(Statement stmt = con.createStatement()) {
+        stmt.executeUpdate("delete from songs where song_id = "+songId);
+    }catch ( SQLException e){
             System.err.println("There is an error in getting the connection");
-            e2.printStackTrace();
+            e.printStackTrace();
         }
-
         }
-
-
-
     }
 
 
