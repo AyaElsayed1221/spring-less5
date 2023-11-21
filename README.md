@@ -34,4 +34,13 @@ as declared in the following pic
 - The only difference between them is: that registerShutdownHook() will execute once the main method ends no matter in which line it was called. (i.e. If I want to getBean after I call registerShutdownHook(), it will return the bean)
 - But the close() will be executed once it was called. (i.e.  If I want to getBean after I call the close() method, it will throw Exception)
 
+![image](https://github.com/AyaElsayed1221/spring-less5/assets/101202928/405e9ebb-d3f0-4cb3-95d8-efdf1c820a2b)
+
+## IMP NOTE: A good habit to keep all the init and destroy method name the same to all your classes
+then instead of duplication of code for each bean and write init-method ="" and destroy-method ="", we can write them only once in the top configuration as default-init-method ="", and default-destroy-method ="".
+![image](https://github.com/AyaElsayed1221/spring-less5/assets/101202928/d3ff1af5-48e0-4e0a-97cc-0e9a837c71b3)
+
+
+
+
 
