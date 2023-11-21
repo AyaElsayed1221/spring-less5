@@ -27,3 +27,11 @@ but notice that at that time u have to use the property tag instead of the @Valu
 as declared in the following pic
 ![image](https://github.com/AyaElsayed1221/spring-less5/assets/101202928/5c4adf80-5e6f-4fce-9484-ab16052ea615)
 
+## A common question in interviews 
+### What is registerShutdownHook(); ?
+- It is another way to close the container.
+- There is no big difference between it and the close() method, It is an alternative to it.
+- The only difference between them is: that registerShutdownHook() will execute once the main method ends no matter in which line it was called. (i.e. If I want to getBean after I call registerShutdownHook(), it will return the bean)
+- But the close() will be executed once it was called. (i.e.  If I want to getBean after I call the close() method, it will throw Exception)
+
+
